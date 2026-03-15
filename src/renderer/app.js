@@ -55,6 +55,8 @@ function renderSystem() {
     { label: "当前系统", value: system.currentVersion },
     { label: "Build ID", value: system.buildId },
     { label: "数据来源", value: system.source },
+    { label: "运行环境", value: system.platform.isSteamDeck ? "Steam Deck" : system.platform.runtimePlatform },
+    { label: "更新策略", value: system.pendingStrategy },
     { label: "上次检查", value: formatDate(system.lastCheckedAt) }
   ]);
 
@@ -70,7 +72,10 @@ function renderSystem() {
     title.textContent = channel.targetVersion;
 
     const desc = document.createElement("p");
-    desc.textContent = channel.summary;
+    desc.textContent = `${channel.summary} ${system.pendingSummary}`;
+
+    const preview = document.createElement("p");
+    preview.textContent = `命令预览: ${channel.commandPreview}`;
 
     const button = document.createElement("button");
     button.className = "primary-button";
@@ -88,7 +93,7 @@ function renderSystem() {
       }
     });
 
-    card.append(badge, title, desc, button);
+    card.append(badge, title, desc, preview, button);
     return card;
   });
 
@@ -101,6 +106,7 @@ function renderPlugins() {
 
   renderStatusGrid(elements.pluginsSummary, [
     { label: "插件来源", value: plugins.source },
+    { label: "运行环境", value: plugins.platform.isSteamDeck ? "Steam Deck" : plugins.platform.runtimePlatform },
     { label: "插件数量", value: String(plugins.items.length) },
     { label: "待更新", value: String(pendingCount) },
     { label: "上次刷新", value: formatDate(plugins.lastCheckedAt) }
@@ -154,6 +160,7 @@ function renderBios() {
     { label: "当前 BIOS", value: bios.currentVersion },
     { label: "厂商", value: bios.vendor },
     { label: "数据来源", value: bios.source },
+    { label: "运行环境", value: bios.platform.isSteamDeck ? "Steam Deck" : bios.platform.runtimePlatform },
     { label: "目标通道", value: bios.selectedChannel }
   ]);
 
