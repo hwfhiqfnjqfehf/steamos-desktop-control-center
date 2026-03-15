@@ -1,0 +1,22 @@
+{
+  "name": "steamos-desktop-control-center",
+  "version": "0.1.0",
+  "description": "SteamOS desktop control center for system updates, plugin updates, and BIOS channel switching.",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "check": "node --check src/main/main.js && node --check src/main/preload.js && node --check src/main/services/steamosService.js && node --check src/renderer/app.js"
+  },
+  "keywords": [
+    "steamos",
+    "steamdeck",
+    "electron",
+    "desktop"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^37.2.0"
+  }
+}

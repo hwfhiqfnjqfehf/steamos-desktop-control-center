@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SteamOS Control Center</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="hero-panel">
+        <p class="eyebrow">Steam Deck Desktop</p>
+        <h1>SteamOS Control Center</h1>
+        <p class="hero-copy">
+          面向桌面 SteamOS 的系统维护中控台，集中处理系统更新、插件更新和 BIOS 通道切换。
+        </p>
+        <div class="hero-meta">
+          <div>
+            <span>设备场景</span>
+            <strong>Steam Deck / SteamOS Desktop</strong>
+          </div>
+          <div>
+            <span>当前模式</span>
+            <strong>本地适配 + Mock 回退</strong>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard">
+        <section class="panel" id="system-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">System</p>
+              <h2>系统版本更新</h2>
+            </div>
+            <button id="refresh-system-btn" class="ghost-button">检查更新</button>
+          </div>
+          <div id="system-summary" class="status-grid"></div>
+          <div id="system-channels" class="card-grid"></div>
+        </section>
+
+        <section class="panel" id="plugin-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Plugins</p>
+              <h2>插件更新</h2>
+            </div>
+            <div class="header-actions">
+              <button id="refresh-plugins-btn" class="ghost-button">刷新列表</button>
+              <button id="update-all-plugins-btn" class="primary-button">全部更新</button>
+            </div>
+          </div>
+          <div id="plugins-summary" class="status-grid"></div>
+          <div id="plugins-list" class="list-stack"></div>
+        </section>
+
+        <section class="panel" id="bios-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Firmware</p>
+              <h2>BIOS 版本切换</h2>
+            </div>
+          </div>
+          <div id="bios-summary" class="status-grid"></div>
+          <div id="bios-channels" class="card-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="status-item-template">
+      <article class="status-item">
+        <span class="label"></span>
+        <strong class="value"></strong>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
